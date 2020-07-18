@@ -3,10 +3,45 @@ import React, { Component } from 'react'
 import clsx from 'clsx';
 import  "./NavBar.css";
 import logo from "../../asset/img/logo.svg";
+import MenuItem from './MenuItem';
 const initState = {
     menu_open:false,
     is_fixed:true,
-
+    menu_item:[
+        {
+            link:"/about",
+            item_name:"About",
+            submenu:[]
+        },
+        {
+            link:"/Service",
+            item_name:"Service",
+            submenu:[
+                {
+                    link:"/web",
+                    item_name:"Web",
+                },
+                {
+                    link:"/app",
+                    item_name:"App",
+                },
+                {
+                    link:"/marketing",
+                    item_name:"Marketing",
+                },
+            ]
+        },
+        {
+            link:"/contact",
+            item_name:"Contact",
+            submenu:[]
+        },
+        {
+            link:"/more",
+            item_name:"More",
+            submenu:[]
+        },
+    ]
 }
 
 export class NavBar extends Component {
@@ -33,11 +68,9 @@ export class NavBar extends Component {
                     </div>
 
                     <div className={clsx('menuList',this.state.menu_open&&'menuOpen')}>
-                        <div className="menuItem">About Us</div>
-                        <div className="menuItem">Service</div>
-                        <div className="menuItem">Function</div>
-                        <div className="menuItem">Contact</div>
-                        <div className="menuItem">More</div>
+                        {this.state.menu_item.map((item)=>(
+                            <MenuItem link={item.link} item_name={item.item_name} submenu={item.submenu}/>
+                        ))}
                     </div>
 
                     <div className="burger" onClick={this.handleMenuOpen}>

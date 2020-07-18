@@ -31,14 +31,54 @@
 .menuItem{
     margin-right: 20px;
     cursor: pointer;
-
+    position: relative;
+    color:#333;
+}
+.menuItem a{
+    color:#333;
+    text-decoration: none;
 }
 .menuItem:last-child{
     margin-right: 0px;
 }
-.menuItem:hover{
+.menuItem:hover a{
+    color:#222;
+}
+
+.subMenu{
+    max-height: 0px;
+    position: absolute;  
+    left: -20px;
+    top: 30px;
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden;
+    transition: all .3s ease;
+
+}
+.subMenuItem{
+    padding:10px;
+    text-align: center;
+    transition: all .3s ease;
     color:#333;
 }
+.subMenuItem a{
+
+}
+.subMenuItem:hover{
+    background-color: #333;
+    
+}
+.subMenuItem:hover a{
+    
+    color:white;
+}
+.menuItem:hover .subMenu{
+    max-height: 1000px;
+    padding-top: 10px;
+}
+
+
 .burger{
     display: none;
     flex-direction: column;
@@ -55,6 +95,8 @@
     background-color: #333;
     margin-top: 5px;
 }
+
+
 
 @media(max-width:991px){
     .menuList{
@@ -80,5 +122,15 @@
     }
     .burger{
         display: flex;
+    }
+    .subMenu{
+        position: relative;
+        padding:0;
+        padding-left:40px;
+        top:0;
+        
+    }
+    .subMenuItem{
+        text-align: start;
     }
 }
